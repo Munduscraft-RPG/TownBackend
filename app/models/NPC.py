@@ -1,10 +1,11 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, ForeignKey
 from app.database import Base
 
 
 class NPC(Base):
     __tablename__ = "npcs"
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
+    given_name = Column(String)
     surname = Column(String)
-    day_of_birth = Column(String)
+    day_of_birth = Column(Integer)
+    job_id = Column(Integer, ForeignKey('jobs.id'))
